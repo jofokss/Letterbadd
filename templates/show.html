@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista dos Filmes</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Nome do Filme</th>
+        <th>Data que assistiu</th>
+        <th>Nota</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for fmovie in fmovies %}
+    <tr>
+        <td>{{ fmovie.name }}</td>
+        <td>{{ fmovie.watchedDate }}</td>
+        <td>{{ fmovie.rating }}</td>
+        <td>
+            <a href="/edit/{{ fmovie.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
+            <a href="/delete/{{ fmovie.id }}">Deletar</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<div style="text-align: center;"><a href="/emp" class="btn btn-primary">Adicionar um novo Filme</a></div>
+</body>
+</html>
